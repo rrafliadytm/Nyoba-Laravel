@@ -8,8 +8,14 @@
   </head>
   <body class="bg-light">
     <main class="container">
-      
+  
         <!-- START DATA -->
+        @if (Session::has('success'))
+          <div class="pt-3 mb-2 bg-red rounded">
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+          </div>
+        @endif
         <div class="my-3 p-3 bg-body rounded shadow-sm">
                 <!-- FORM PENCARIAN -->
                 <div class="pb-3">

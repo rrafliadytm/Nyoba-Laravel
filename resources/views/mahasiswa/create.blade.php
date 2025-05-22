@@ -10,25 +10,37 @@
     <main class="container">
 
  <!-- START FORM -->
+      @if ($errors->any())
+      <div class="pt-3 mb-2 bg-red rounded">
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      </div>
+      @endif
+
        <form action='{{url('mahasiswa')}}'  method='post'>
         @csrf
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <div class="mb-3 row">
                 <label for="nim" class="col-sm-2 col-form-label">NIM</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name='nim' id="nim">
+                    <input type="number" class="form-control" name='nim' id="nim" value="{{ Session::get('nim') }}">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name='nama' id="nama">
+                    <input type="text" class="form-control" name='nama' id="nama" value="{{ Session::get('nama') }}">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="jurusan" class="col-sm-2 col-form-label">Jurusan</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name='jurusan' id="jurusan">
+                    <input type="text" class="form-control" name='jurusan' id="jurusan" value="{{ Session::get('jurusan') }}">
                 </div>
             </div>
             <div class="mb-3 row">
