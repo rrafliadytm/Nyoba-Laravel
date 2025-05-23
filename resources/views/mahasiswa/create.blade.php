@@ -10,17 +10,19 @@
     <main class="container">
 
  <!-- START FORM -->
-      @if ($errors->any())
-      <div class="pt-3 mb-2 bg-red rounded">
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-      </div>
-      @endif
+        
+        {{-- MESSAGE SAAT ERROR INPUT --}}
+        @if ($errors->any())
+            <div class="pt-3 mb-2 bg-red rounded">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
 
        <form action='{{url('mahasiswa')}}'  method='post'>
         @csrf

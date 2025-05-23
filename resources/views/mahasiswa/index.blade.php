@@ -10,12 +10,16 @@
     <main class="container">
   
         <!-- START DATA -->
+
+        {{-- MESSAGE INPUT BERHASIL DITAMBAHKAN --}}
         @if (Session::has('success'))
           <div class="pt-3 mb-2 bg-red rounded">
             <div class="alert alert-success">
                 {{ Session::get('success') }}
           </div>
         @endif
+        
+        {{--  --}}
         <div class="my-3 p-3 bg-body rounded shadow-sm">
                 <!-- FORM PENCARIAN -->
                 <div class="pb-3">
@@ -29,7 +33,8 @@
                 <div class="pb-3">
                   <a href='{{url('mahasiswa/create')}}' class="btn btn-primary">+ Tambah Data</a>
                 </div>
-          
+
+                <!-- TAMPILKAN DATA -->
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -41,16 +46,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($data as $item)               
                         <tr>
-                            <td>1</td>
-                            <td>1001</td>
-                            <td>Ani</td>
-                            <td>Ilmu Komputer</td>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $item->nim}}</td>
+                            <td>{{ $item->nama}}</td>
+                            <td>{{ $item->jurusan}}</td>
                             <td>
                                 <a href='' class="btn btn-warning btn-sm">Edit</a>
                                 <a href='' class="btn btn-danger btn-sm">Del</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
                
