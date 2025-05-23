@@ -60,7 +60,8 @@
                         @endforeach
                     </tbody>
                 </table>
-               
+               {{ $data->links() }}
+                <!-- AKHIR TAMPILKAN DATA -->
           </div>
           <!-- AKHIR DATA -->
     </main>
