@@ -20,15 +20,15 @@ class mahasiswaController extends Controller
             $data = mahasiswa::where('nim', 'like', '%' . $katakunci . '%')
                 ->orWhere('nama', 'like', '%' . $katakunci . '%')
                 ->orWhere('jurusan', 'like', '%' . $katakunci . '%')
-                ->orderBy('nim', 'desc')->paginate(1);
+                ->orderBy('nim', 'asc')->paginate(5);
         } else {
-            $data = mahasiswa::orderBy('nim', 'desc')->paginate(1);
+            $data = mahasiswa::orderBy('nim', 'desc')->paginate(5);
         }
         if ($data->isEmpty()) {
-            return redirect()->to('mahasiswa')->with('failed', 'Data mahasiswa tidak ditemukan!');
-        } else {
             FacadesSession::flash('katakunci', $katakunci);
-            $data = mahasiswa::orderBy('nim', 'desc')->paginate(1);
+            return redirect()
+                ->route('mahasiswa.index')
+                ->with('failed', 'Data mahasiswa dengan kata kunci "' . $katakunci . '" tidak ditemukan!');
         }
         return view('mahasiswa.index')->with('data', $data);
     }
@@ -71,7 +71,7 @@ class mahasiswaController extends Controller
     public function show(string $id)
     {
         //
-        
+
     }
 
     /**

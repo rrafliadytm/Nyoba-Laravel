@@ -8,7 +8,7 @@
   </head>
   <body class="bg-light">
     <main class="container">
-  
+
         <!-- START DATA -->
 
         {{-- MESSAGE INPUT BERHASIL DITAMBAHKAN --}}
@@ -26,13 +26,13 @@
               {{ Session::get('failed') }}
             </div>
         @endif
-        
+
 
         <div class="my-3 p-3 bg-body rounded shadow-sm">
                 <!-- FORM PENCARIAN -->
                 <div class="pb-3">
                   <form class="d-flex" action="{{url('mahasiswa')}}" method="get">
-                      <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
+                      <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Cari NIM/Nama/Jurusan" aria-label="Search">
                       <button class="btn btn-secondary" type="submit">Cari</button>
                   </form>
                 </div>
@@ -54,7 +54,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $item)               
+                        @foreach ($data as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->nim}}</td>
