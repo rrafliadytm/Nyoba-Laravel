@@ -15,6 +15,7 @@ class mahasiswaController extends Controller
     public function index(Request $request)
 
     {
+        $data = mahasiswa::orderBy('nim', 'desc')->paginate(5);
         $katakunci = $request->get('katakunci');
         if ($katakunci) {
             $data = mahasiswa::where('nim', 'like', '%' . $katakunci . '%')
@@ -30,7 +31,7 @@ class mahasiswaController extends Controller
                 ->route('mahasiswa.index')
                 ->with('failed', 'Data mahasiswa dengan kata kunci "' . $katakunci . '" tidak ditemukan!');
         }
-        return view('mahasiswa.index')->with('data', $data);
+        return view('mahasiswa.index', compact('data'))->with('data', $data);
     }
 
     /**
